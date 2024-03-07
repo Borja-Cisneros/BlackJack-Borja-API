@@ -1,4 +1,4 @@
-package ad.apiud6borja.models;
+package di.blackjackborjaapi.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -8,22 +8,18 @@ import jakarta.validation.constraints.NotBlank;
 public class Puntuacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_puntuacion;
-    @Min(value = 0, message = "Como vas a poner puntuacion negativa manin? tienes manos?")
+    private Long id;
+    @Min(value = 0, message = "Como vas a guardar un 0 manin? juega anda.")
     private Long puntuacion;
-    @NotBlank(message = "A ver mi pana, tendras que ponerle un jugador no?")
-    private String jugador;
-    @ManyToOne
-    @JoinColumn(name = "id_juego")
-    private Juego juego;
+    @NotBlank(message = "A ver mi pana, tendras que ponerte un nombre no?")
+    private String nombre;
 
     public Puntuacion() {
     }
 
-    public Puntuacion(Long puntuacion, String jugador, Juego juego) {
+    public Puntuacion(Long puntuacion, String jugador) {
         this.puntuacion = puntuacion;
-        this.jugador = jugador;
-        this.juego = juego;
+        this.nombre = jugador;
     }
 
     public Long getPuntuacion() {
@@ -34,27 +30,19 @@ public class Puntuacion {
         this.puntuacion = puntuacion;
     }
 
-    public String getJugador() {
-        return jugador;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setJugador(String jugador) {
-        this.jugador = jugador;
+    public void setNombre(String jugador) {
+        this.nombre = jugador;
     }
 
-    public Juego getJuego() {
-        return juego;
+    public void setId(Long idPuntuacion) {
+        this.id = idPuntuacion;
     }
 
-    public void setJuego(Juego juego) {
-        this.juego = juego;
-    }
-
-    public void setId_puntuacion(Long idPuntuacion) {
-        this.id_puntuacion = idPuntuacion;
-    }
-
-    public Long getId_puntuacion() {
-        return id_puntuacion;
+    public Long getId() {
+        return id;
     }
 }
